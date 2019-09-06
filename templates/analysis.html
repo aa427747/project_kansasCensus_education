@@ -1,0 +1,193 @@
+<!-- 
+  CREATED BY:       RYAN GFELLER / CLAUDIA / ALISSA / MAURA
+  CREATED ON:       MAY 18, 2019
+  COMMENTS:  This is the project summary of results page.
+  UPDATES:    -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kansas Income by Education and Population</title>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  
+  
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+
+<body>
+  <div class="row">
+    <div class="col-lg-4 navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">My Little Pandas Foundation</a>
+    </div>
+    <div class="col-lg-8 navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark float-right">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Plots
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/comparisons">Comparisons</a>
+                <a class="dropdown-item" href="/vis_population">Population</a>
+              </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/analysis">Analysis</a>
+              </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/data">Earned Income Data </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/heatmap">Maps</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pastdata">Past Data</a>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+<!--==========================
+  Analysis Section
+============================-->
+  <section id="analysis">
+
+    <div class="container" style="padding: 10px;">
+
+    <div class="row col-md-12 text">
+      <!-- Description of the Problem, Data Used, Analysis Notes -->
+      <h2 class="text"> Foundation Goal </h2>
+      <div class="row col-sm-12">
+        <ul> 
+          <h4>Determine if there is a positive correlation between higher earnings and higher levels of education.
+          </h4>
+          <li><h6>Is there a financial benefit of pursuing higher level education? </h6></li>
+          <li><h6>How does the county size impact median earnings? </h6></li>
+          <li><h6>What is the wage gap between men and women based on different factors? </h6> </li>
+          <li><h6>What is the education level by race? </h6> </li>
+        </ul>
+      </div>
+      <div class="row col-sm-12">
+        <u1>
+          <h3>Data Sources </h3>
+          <h6> <a href="https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?src=bkmk"> United
+              State Census American Fact Results</a></h6>
+        </u1>
+      </div>
+      <div class="row col-sm-12 text">
+        <h3>Analysis Notes </h3>
+      </div>
+      <div class="row col-sm-12"></div>
+      <ul>
+        <h5>Leasons learned: </h5>
+        <li><h6> Data was not available on income by race. </h6></li>
+        <li><h6> We had data issues with importing it into our flask app. </h6></li>
+        <li><h6> Reusing code might be helpful, however it might not always be. </h6></li>
+        <li><h6> We had to convert dictionaries into arrays in order to make the visualizations into our app. </h6></li>
+        <li><h6> Reusing the same classes causes pages to render empty. </h6></li>
+      </ul>
+      <div class="row col-sm-12 text">
+        <h3>May 2019 Analysis </h3>
+        </div>
+        <div class="row col-sm-12"></div>
+      <ul>
+        <h5> Data findings: </h5>
+          <li><h6> Men out earn women in every country in Kansas. </h6></li>
+          <li><h6> On average, in Kansas, women make about $26,000 median income and men make $40,000 median income- for every $1 a man makes, a woman makes $0.65. </h6></li>
+          <li><h6> In Johnson County, the median income wage gap is almost $21,000. </h6></li>
+          <li><h6> There are more high school graduates per race than bachelors degree. </h6></li>
+          <li><h6> Johnson county shows a high level of high school graduation. </h6></li>
+          <li><h6> In Johnson county, 56% of the "white" population has a bachelors degree. </h6></li>
+          <li><h6> Comanche county (pop 1790), the wage gap is much closer, not every race is represented in the county, the level of HS is fairly high (94% of whites have a HS diploma but only 19% have a bachelors) but bachelors is very low. </h6></li>
+          <li><h6> The circle layer better denotes the population differences within the smaller and larger eastern counties.          </h6></li>
+          <li><h6> Median income does show to be similar, but there are some counties showing as undefined, which may be creating irregularities in the map.          </h6></li>
+          <li><h6> In the March analysis, we saw larger low income in the higher populated counties, which is why we can see the median income level out.          </h6></li>
+          <li><h6> Eastern counties have higher Bachelors and Grads income counts than the western counties.  There is a difference between them.  Thomas to Johnson county has a $20-30k difference in income.            </h6></li>
+          <li><h6> We were not able to pull the Choropleth map because we didn't have Geojson data.          </h6></li>
+        
+      </ul>
+      <div class="row col-sm-12 text">
+        <h3>March 2019 Analysis</h3>
+      </div>
+      <div class="row col-sm-12"></div>
+        <ul>
+          <!-- <h4> Noted issues in the data and findings. </h4> -->
+          <li><h6>Income levels across the education levels do vary on the county type.</h6></li>
+          <li><h6>Urban and Metro counties Median income is higher than in the more rural counties.</h6></li>
+          <li><h6>What we don’t have data on is the efforts the rural counties are making to recruit from the larger
+            counties impacting income. This may be supported in the BA and Grad Income categories.</h6></li>
+          <li><h6>Higher levels of education lead to higher median income. </h6></li>
+          <li><h6>Income disparity in the Urban and Metro areas are noticeable. </h6></li>
+          <li><h6>Degrees appear to influence income more in the larger counties possibly due to additional competition.
+          </h6></li>
+          <li><h6>There is a benefit to getting a masters or professional degree regardless of the county. </h6></li>
+          <li><h6>High school degrees are critical to remaining above the poverty line especially in the Urban and Metro
+            counties. </h6></li>
+        </ul>
+    </div>
+  </section><!-- #analysis -->
+<!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>MLP</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Regna
+        -->
+        Designed by My Little Pandas Foundation (MLP)</a>
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+
+      <!-- <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script> -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+     
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      <script> AOS.init();</script>
+
+  
+
+</body>
+
+</html>

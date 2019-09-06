@@ -1,0 +1,217 @@
+<!-- 
+  CREATED BY:       RYAN GFELLER / CLAUDIA / ALISSA / MAURA
+  CREATED ON:       MAY 18, 2019
+  COMMENTS:  This is the starting page of the project website.
+  UPDATES:  8/16/2019 - Added Team and Footer information and adding .css formatting to the main page
+
+--> 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kansas Income by Education and Population</title>
+
+  <!-- Favicons -->
+  <!-- <link rel="shortcut icon" href="https://d2wldr9tsuuj1b.cloudfront.net/11868/favicon.ico"> -->
+  <!-- <link href="img/favicon.png" rel="icon"> -->
+  <!-- <link href="img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+  <link href="../static/images/edu-icon.png" rel="icon">
+  
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  
+    <!-- Libraries CSS Files -->
+  <link rel="stylesheet" href="../static/lib/font-awesome/css/font-awesome.min.css" >
+  <!-- <link href="../assets/lib/animate/animate.min.css" rel="stylesheet"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.min.css') }}"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/animate/animate.min.css') }}"> -->
+
+  
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+
+<!--==========================
+  Navigation Bar
+============================-->
+
+<body>
+  <div class="row">
+    <div class="col-lg-4 navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">My Little Pandas Foundation</a>
+    </div>
+    <div class="col-lg-8 navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark float-right">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Plots
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/comparisons">Comparisons</a>
+                <a class="dropdown-item" href="/vis_population">Population</a>
+              </div>
+            </li>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/analysis">Analysis</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/data">Earned Income Data </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/heatmap">Maps</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pastdata">Past Data</a>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+<!--==========================
+  Introduction Section
+============================-->
+  <section id="intro">
+  <div class="container" style="padding: 10px;">
+    <div class="row">
+      <!-- The Jumbotron will have the picture of the education in the .css -->
+        <div data-aos="zoom-in" class="col-md-12 jumbotron jumbotron-special text-center">
+        </div>
+      
+    </div>
+  </div>
+  </section>
+
+   <!--==========================
+      Team Section
+    ============================-->
+    <!-- <div class="row"> -->
+    <section id="team">
+        <div class="container">
+          <div class="section-header">
+            <h3 class="section-title">Team</h3>
+            <p class="section-description">The following are members of the MLP team.</p>
+          </div>
+          <div class="row">
+            <div class="col-lg-3 col-md-6">
+              <div class="member">
+                <!-- <div class="pic"><img src="../assets/img/Ryan.jpg" width="300px" height="300px" alt=""></div> -->
+                <div class="pic"><img src="{{ url_for('static', filename='images/Ryan.jpg') }}" width="300px" height="300px" alt=""></div>
+                
+                <h4>Ryan Gfeller</h4>
+                <span>Data Analyst</span>
+                <div class="social">
+                  <!-- <a href=""><i class="fa fa-twitter"></i></a> -->
+                  <!-- <a href=""><i class="fa fa-facebook"></i></a> -->
+                  <!-- <a href=""><i class="fa fa-google-plus"></i></a> -->
+                  <a href="https://www.linkedin.com/in/ryan-gfeller-a0321614/" target="_bio"><i class="fa fa-linkedin"></i></a>
+                  <a href="https://github.com/aa427747" target="_bio"><i class="fa fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-lg-3 col-md-6">
+              <div class="member">
+                  <!-- <div class="pic"><img src="../assets/img/Maura.jpg" width="300px" height="300px" alt=""></div> -->
+                  <div class="pic"><img src="{{ url_for('static', filename='images/Maura.jpg') }}" width="300px" height="300px" alt=""></div>
+                <h4>Maura Wernimont</h4>
+                <span>Data Analyst</span>
+                <div class="social">
+                  <!-- <a href=""><i class="fa fa-twitter"></i></a> -->
+                  <!-- <a href=""><i class="fa fa-facebook"></i></a> -->
+                  <a href="https://www.linkedin.com/in/maura-wernimont-ba0b4937/" target="_bio"><i class="fa fa-linkedin"></i></a>
+                  <a href="https://github.com/maura87" target="_bio"><i class="fa fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-lg-3 col-md-6">
+              <div class="member">
+                  <!-- <div class="pic"><img src="../assets/img/Alissa.jpg" width="300px" height="300px" alt=""></div> -->
+                  <div class="pic"><img src="{{ url_for('static', filename='images/Alissa.jpg') }}" width="300px" height="300px" alt=""></div>
+                <h4>Alissa Waddell</h4>
+                <span>Data Analyst</span>
+                <div class="social">
+                  <!-- <a href=""><i class="fa fa-twitter"></i></a> -->
+                  <!-- <a href=""><i class="fa fa-facebook"></i></a> -->
+                  <a href="https://www.linkedin.com/in/alissa-waddell-67716326/" target="_bio"><i class="fa fa-linkedin"></i></a>
+                  <a href="https://github.com/ailissa82" target="_bio"><i class="fa fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-lg-3 col-md-6">
+              <div class="member">
+                  <div class="pic"><img src="{{ url_for('static', filename='images/claudia.jpg') }}" width="300px" height="300px" alt=""></div>
+                  <!-- <div class="pic"><img src="../assets/img/claudia.jpg" width="300px" height="300px" alt=""></div> -->
+                <h4>Claudia Gomez-Beltran</h4>
+                <span>Data Analyst</span>
+                <div class="social">
+                  <!-- <a href=""><i class="fa fa-twitter"></i></a>
+                  <a href=""><i class="fa fa-facebook"></i></a>
+                  <a href=""><i class="fa fa-google-plus"></i></a> -->
+                  <a href="https://www.linkedin.com/in/claudiagb04/" target="_bio"><i class="fa fa-linkedin"></i></a>
+                  <a href="https://github.com/cayonice" target="_bio"><i class="fa fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </section><!-- #team -->
+      <!-- </div> -->
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+      <div class="footer-top">
+        <div class="container">
+  
+        </div>
+      </div>
+  
+      <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong>MLP</strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          Designed by My Little Pandas Foundation (MLP)</a>
+        </div>
+      </div>
+    </footer><!-- #footer -->
+
+      <!-- <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script> -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+     
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      <script> AOS.init();</script>
+
+
+</body>
+
+</html>

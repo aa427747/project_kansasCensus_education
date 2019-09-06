@@ -1,0 +1,2622 @@
+<!-- 
+  CREATED BY:       RYAN GFELLER
+  CREATED ON:       MAY 18, 2019
+  COMMENTS:  Create the table from the convert .csv to HTML to show a table of the data used in the analysis.
+  UPDATES:    -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kansas Income by Education and Population</title>
+  <link rel="stylesheet" href="reset.css">  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+<body>
+    <div class="row">
+      <div class="col-lg-4 navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">My Little Pandas Foundation</a>
+      </div>
+        <div class="col-lg-8 navbar-dark bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark float-right">      
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                      <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Plots
+                          </a>
+                          <!-- </li> -->
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" href="/comparisons">Comparisons</a>
+                              <a class="dropdown-item" href="/vis_population">Population</a>
+                          </div>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/analysis">Analysis</a>
+                            </li>                          
+                          <li class="nav-item">
+                              <a class="nav-link" href="/data">Earned Income Data</a>
+                            </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/heatmap">Maps</a>
+                            </li>
+                          <li class="nav-item">
+                                <a class="nav-link" href="/pastdata">Past Data</a>
+                            </li>
+                      </ul>
+                    </div>
+                  </nav>
+        </div>
+    </div>
+<!--==========================
+  Team Section
+============================-->
+  <section id="data">
+  <div class="container">
+    <div class="row Datadesc">
+        <p>The following table identifies by county the key numbers for median income and general population.</p>
+    </div>
+    <div class="row">
+
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-condensed">
+            <thead><tr><th title="Field #1">county</th>
+            <th title="Field #2">latitude</th>
+            <th title="Field #3">longitude</th>
+            <th title="Field #4">population</th>
+            <th title="Field #5">Total_Median_Earnings_</th>
+            <th title="Field #6">Total_Median_Earning_Less_than_HS</th>
+            <th title="Field #7">Total_Median_Earning_HS</th>
+            <th title="Field #8">Total_Median_Earning_Assoc</th>
+            <th title="Field #9">Total_Median_Earning_Bach</th>
+            <th title="Field #10">Total_Median_Earning_Grad</th>
+            <th title="Field #11">Male_Median_Earnings</th>
+            <th title="Field #12">Male_Median_Earning_Less_than_HS</th>
+            <th title="Field #13">Male_Median_Earning_HS</th>
+            <th title="Field #14">Male_Median_Earning_Assoc</th>
+            <th title="Field #15">Male_Median_Earning_Bach</th>
+            <th title="Field #16">Male_Median_Earning_Grad</th>
+            <th title="Field #17">Female_Median_Earnings</th>
+            <th title="Field #18">Female_Median_Earning_Less_than_HS</th>
+            <th title="Field #19">Female_Median_Earning_HS</th>
+            <th title="Field #20">Female_Median_Earning_Assoc</th>
+            <th title="Field #21">Female_Median_Earning_Bach</th>
+            <th title="Field #22">Female_Median_Earning_Grad</th>
+            </tr></thead>
+            <tbody><tr>
+            <td>Allen</td>
+            <td align="right">37.8586</td>
+            <td align="right">-95.275</td>
+            <td align="right">12519</td>
+            <td align="right">30057</td>
+            <td align="right">36705</td>
+            <td align="right">26577</td>
+            <td align="right">28008</td>
+            <td align="right">39116</td>
+            <td align="right">52315</td>
+            <td align="right">35670</td>
+            <td align="right">40938</td>
+            <td align="right">31218</td>
+            <td align="right">36058</td>
+            <td align="right">47917</td>
+            <td align="right">60159</td>
+            <td align="right">24035</td>
+            <td align="right">0</td>
+            <td align="right">19715</td>
+            <td align="right">22031</td>
+            <td align="right">36612</td>
+            <td align="right">47750</td>
+            </tr>
+            <tr>
+            <td>Anderson</td>
+            <td align="right">38.221</td>
+            <td align="right">-95.2293</td>
+            <td align="right">7833</td>
+            <td align="right">29803</td>
+            <td align="right">42542</td>
+            <td align="right">27277</td>
+            <td align="right">25705</td>
+            <td align="right">37083</td>
+            <td align="right">40967</td>
+            <td align="right">37500</td>
+            <td align="right">44833</td>
+            <td align="right">36958</td>
+            <td align="right">30167</td>
+            <td align="right">37849</td>
+            <td align="right">0</td>
+            <td align="right">21998</td>
+            <td align="right">3352</td>
+            <td align="right">14167</td>
+            <td align="right">22178</td>
+            <td align="right">27361</td>
+            <td align="right">41321</td>
+            </tr>
+            <tr>
+            <td>Atchison</td>
+            <td align="right">39.5159</td>
+            <td align="right">-95.2915</td>
+            <td align="right">16332</td>
+            <td align="right">33088</td>
+            <td align="right">37206</td>
+            <td align="right">29895</td>
+            <td align="right">24798</td>
+            <td align="right">42221</td>
+            <td align="right">49211</td>
+            <td align="right">41992</td>
+            <td align="right">37426</td>
+            <td align="right">41382</td>
+            <td align="right">39074</td>
+            <td align="right">67500</td>
+            <td align="right">65234</td>
+            <td align="right">22995</td>
+            <td align="right">0</td>
+            <td align="right">19472</td>
+            <td align="right">18268</td>
+            <td align="right">40654</td>
+            <td align="right">43368</td>
+            </tr>
+            <tr>
+            <td>Barber</td>
+            <td align="right">37.2369</td>
+            <td align="right">-98.624</td>
+            <td align="right">4586</td>
+            <td align="right">31760</td>
+            <td align="right">34625</td>
+            <td align="right">26371</td>
+            <td align="right">30550</td>
+            <td align="right">40662</td>
+            <td align="right">62159</td>
+            <td align="right">44694</td>
+            <td align="right">49000</td>
+            <td align="right">36902</td>
+            <td align="right">47143</td>
+            <td align="right">41250</td>
+            <td align="right">75341</td>
+            <td align="right">21875</td>
+            <td align="right">20625</td>
+            <td align="right">15924</td>
+            <td align="right">18750</td>
+            <td align="right">40481</td>
+            <td align="right">48824</td>
+            </tr>
+            <tr>
+            <td>Barton</td>
+            <td align="right">38.4829</td>
+            <td align="right">-98.7911</td>
+            <td align="right">26476</td>
+            <td align="right">33279</td>
+            <td align="right">21538</td>
+            <td align="right">26889</td>
+            <td align="right">33825</td>
+            <td align="right">41098</td>
+            <td align="right">53445</td>
+            <td align="right">40842</td>
+            <td align="right">31515</td>
+            <td align="right">34341</td>
+            <td align="right">42432</td>
+            <td align="right">50278</td>
+            <td align="right">55000</td>
+            <td align="right">25244</td>
+            <td align="right">11946</td>
+            <td align="right">20872</td>
+            <td align="right">26941</td>
+            <td align="right">33598</td>
+            <td align="right">51394</td>
+            </tr>
+            <tr>
+            <td>Bourbon</td>
+            <td align="right">37.8342</td>
+            <td align="right">-94.8595</td>
+            <td align="right">14754</td>
+            <td align="right">30283</td>
+            <td align="right">20221</td>
+            <td align="right">28810</td>
+            <td align="right">28892</td>
+            <td align="right">39414</td>
+            <td align="right">50363</td>
+            <td align="right">34837</td>
+            <td align="right">23000</td>
+            <td align="right">32922</td>
+            <td align="right">35319</td>
+            <td align="right">41452</td>
+            <td align="right">87888</td>
+            <td align="right">24968</td>
+            <td align="right">10446</td>
+            <td align="right">23545</td>
+            <td align="right">24153</td>
+            <td align="right">34063</td>
+            <td align="right">41765</td>
+            </tr>
+            <tr>
+            <td>Brown</td>
+            <td align="right">39.7827</td>
+            <td align="right">-95.5862</td>
+            <td align="right">9641</td>
+            <td align="right">30644</td>
+            <td align="right">23571</td>
+            <td align="right">23750</td>
+            <td align="right">30494</td>
+            <td align="right">40000</td>
+            <td align="right">52017</td>
+            <td align="right">34536</td>
+            <td align="right">29583</td>
+            <td align="right">31034</td>
+            <td align="right">34000</td>
+            <td align="right">50905</td>
+            <td align="right">60625</td>
+            <td align="right">24039</td>
+            <td align="right">14861</td>
+            <td align="right">17846</td>
+            <td align="right">23386</td>
+            <td align="right">29157</td>
+            <td align="right">50134</td>
+            </tr>
+            <tr>
+            <td>Butler</td>
+            <td align="right">37.7867</td>
+            <td align="right">-96.8935</td>
+            <td align="right">66878</td>
+            <td align="right">41802</td>
+            <td align="right">27945</td>
+            <td align="right">32830</td>
+            <td align="right">36163</td>
+            <td align="right">50487</td>
+            <td align="right">62475</td>
+            <td align="right">51470</td>
+            <td align="right">34919</td>
+            <td align="right">44886</td>
+            <td align="right">48015</td>
+            <td align="right">61658</td>
+            <td align="right">84351</td>
+            <td align="right">29913</td>
+            <td align="right">12220</td>
+            <td align="right">19356</td>
+            <td align="right">25662</td>
+            <td align="right">40644</td>
+            <td align="right">53041</td>
+            </tr>
+            <tr>
+            <td>Chase</td>
+            <td align="right">38.3409</td>
+            <td align="right">-96.6309</td>
+            <td align="right">2683</td>
+            <td align="right">31531</td>
+            <td align="right">27083</td>
+            <td align="right">26955</td>
+            <td align="right">30121</td>
+            <td align="right">38073</td>
+            <td align="right">52500</td>
+            <td align="right">34327</td>
+            <td align="right">0</td>
+            <td align="right">32206</td>
+            <td align="right">36875</td>
+            <td align="right">41250</td>
+            <td align="right">50313</td>
+            <td align="right">29893</td>
+            <td align="right">0</td>
+            <td align="right">24792</td>
+            <td align="right">28036</td>
+            <td align="right">37344</td>
+            <td align="right">75313</td>
+            </tr>
+            <tr>
+            <td>Chautauqua</td>
+            <td align="right">37.0875</td>
+            <td align="right">-96.1883</td>
+            <td align="right">3363</td>
+            <td align="right">29886</td>
+            <td align="right">19792</td>
+            <td align="right">22275</td>
+            <td align="right">29286</td>
+            <td align="right">41200</td>
+            <td align="right">41250</td>
+            <td align="right">31849</td>
+            <td align="right">23250</td>
+            <td align="right">31071</td>
+            <td align="right">32256</td>
+            <td align="right">47222</td>
+            <td align="right">0</td>
+            <td align="right">25173</td>
+            <td align="right">16429</td>
+            <td align="right">14018</td>
+            <td align="right">25691</td>
+            <td align="right">35625</td>
+            <td align="right">42083</td>
+            </tr>
+            <tr>
+            <td>Cherokee</td>
+            <td align="right">37.1738</td>
+            <td align="right">-94.814</td>
+            <td align="right">20115</td>
+            <td align="right">29485</td>
+            <td align="right">19505</td>
+            <td align="right">25550</td>
+            <td align="right">27994</td>
+            <td align="right">41382</td>
+            <td align="right">50190</td>
+            <td align="right">36261</td>
+            <td align="right">25954</td>
+            <td align="right">32404</td>
+            <td align="right">35504</td>
+            <td align="right">44608</td>
+            <td align="right">50615</td>
+            <td align="right">23125</td>
+            <td align="right">17674</td>
+            <td align="right">20871</td>
+            <td align="right">20992</td>
+            <td align="right">36059</td>
+            <td align="right">48929</td>
+            </tr>
+            <tr>
+            <td>Cheyenne</td>
+            <td align="right">39.7154</td>
+            <td align="right">-101.721</td>
+            <td align="right">2683</td>
+            <td align="right">31818</td>
+            <td align="right">15625</td>
+            <td align="right">27173</td>
+            <td align="right">28393</td>
+            <td align="right">41607</td>
+            <td align="right">51875</td>
+            <td align="right">39485</td>
+            <td align="right">37361</td>
+            <td align="right">35568</td>
+            <td align="right">30855</td>
+            <td align="right">54821</td>
+            <td align="right">52778</td>
+            <td align="right">24917</td>
+            <td align="right">11691</td>
+            <td align="right">16719</td>
+            <td align="right">26667</td>
+            <td align="right">26875</td>
+            <td align="right">39886</td>
+            </tr>
+            <tr>
+            <td>Clark</td>
+            <td align="right">37.3072</td>
+            <td align="right">-99.8893</td>
+            <td align="right">2004</td>
+            <td align="right">34805</td>
+            <td align="right">41563</td>
+            <td align="right">28409</td>
+            <td align="right">30568</td>
+            <td align="right">42045</td>
+            <td align="right">46563</td>
+            <td align="right">40441</td>
+            <td align="right">41771</td>
+            <td align="right">34250</td>
+            <td align="right">30000</td>
+            <td align="right">51771</td>
+            <td align="right">0</td>
+            <td align="right">27891</td>
+            <td align="right">0</td>
+            <td align="right">22813</td>
+            <td align="right">30962</td>
+            <td align="right">32596</td>
+            <td align="right">37344</td>
+            </tr>
+            <tr>
+            <td>Clay</td>
+            <td align="right">39.3065</td>
+            <td align="right">-97.134</td>
+            <td align="right">7958</td>
+            <td align="right">30457</td>
+            <td align="right">21328</td>
+            <td align="right">24140</td>
+            <td align="right">30403</td>
+            <td align="right">36750</td>
+            <td align="right">42708</td>
+            <td align="right">37487</td>
+            <td align="right">30161</td>
+            <td align="right">35250</td>
+            <td align="right">37134</td>
+            <td align="right">54123</td>
+            <td align="right">77833</td>
+            <td align="right">21768</td>
+            <td align="right">0</td>
+            <td align="right">18878</td>
+            <td align="right">22167</td>
+            <td align="right">22500</td>
+            <td align="right">34125</td>
+            </tr>
+            <tr>
+            <td>Cloud</td>
+            <td align="right">39.4842</td>
+            <td align="right">-97.6232</td>
+            <td align="right">8991</td>
+            <td align="right">31609</td>
+            <td align="right">35757</td>
+            <td align="right">23112</td>
+            <td align="right">31021</td>
+            <td align="right">41912</td>
+            <td align="right">41389</td>
+            <td align="right">38768</td>
+            <td align="right">32000</td>
+            <td align="right">35833</td>
+            <td align="right">39688</td>
+            <td align="right">51413</td>
+            <td align="right">42813</td>
+            <td align="right">24580</td>
+            <td align="right">50068</td>
+            <td align="right">15964</td>
+            <td align="right">24180</td>
+            <td align="right">35000</td>
+            <td align="right">40284</td>
+            </tr>
+            <tr>
+            <td>Coffey</td>
+            <td align="right">38.1732</td>
+            <td align="right">-95.709</td>
+            <td align="right">8224</td>
+            <td align="right">39190</td>
+            <td align="right">23125</td>
+            <td align="right">35767</td>
+            <td align="right">37159</td>
+            <td align="right">51570</td>
+            <td align="right">44338</td>
+            <td align="right">51466</td>
+            <td align="right">45227</td>
+            <td align="right">41875</td>
+            <td align="right">55607</td>
+            <td align="right">64250</td>
+            <td align="right">82708</td>
+            <td align="right">25882</td>
+            <td align="right">14750</td>
+            <td align="right">22824</td>
+            <td align="right">22449</td>
+            <td align="right">43646</td>
+            <td align="right">38750</td>
+            </tr>
+            <tr>
+            <td>Comanche</td>
+            <td align="right">37.2156</td>
+            <td align="right">-99.3594</td>
+            <td align="right">1790</td>
+            <td align="right">35135</td>
+            <td align="right">25250</td>
+            <td align="right">36250</td>
+            <td align="right">32386</td>
+            <td align="right">23750</td>
+            <td align="right">37500</td>
+            <td align="right">37113</td>
+            <td align="right">26000</td>
+            <td align="right">38333</td>
+            <td align="right">37656</td>
+            <td align="right">35500</td>
+            <td align="right">34375</td>
+            <td align="right">30147</td>
+            <td align="right">0</td>
+            <td align="right">26364</td>
+            <td align="right">30588</td>
+            <td align="right">0</td>
+            <td align="right">37813</td>
+            </tr>
+            <tr>
+            <td>Cowley</td>
+            <td align="right">37.2984</td>
+            <td align="right">-96.8641</td>
+            <td align="right">35361</td>
+            <td align="right">31936</td>
+            <td align="right">21212</td>
+            <td align="right">28081</td>
+            <td align="right">30616</td>
+            <td align="right">41565</td>
+            <td align="right">53382</td>
+            <td align="right">40411</td>
+            <td align="right">28492</td>
+            <td align="right">32068</td>
+            <td align="right">42221</td>
+            <td align="right">54167</td>
+            <td align="right">60179</td>
+            <td align="right">25415</td>
+            <td align="right">11641</td>
+            <td align="right">20133</td>
+            <td align="right">21557</td>
+            <td align="right">35429</td>
+            <td align="right">50755</td>
+            </tr>
+            <tr>
+            <td>Crawford</td>
+            <td align="right">37.5076</td>
+            <td align="right">-94.778</td>
+            <td align="right">39034</td>
+            <td align="right">31609</td>
+            <td align="right">25426</td>
+            <td align="right">23304</td>
+            <td align="right">26936</td>
+            <td align="right">41203</td>
+            <td align="right">47364</td>
+            <td align="right">36180</td>
+            <td align="right">30179</td>
+            <td align="right">31301</td>
+            <td align="right">31627</td>
+            <td align="right">46125</td>
+            <td align="right">55761</td>
+            <td align="right">26508</td>
+            <td align="right">12386</td>
+            <td align="right">18809</td>
+            <td align="right">22601</td>
+            <td align="right">38177</td>
+            <td align="right">44089</td>
+            </tr>
+            <tr>
+            <td>Decatur</td>
+            <td align="right">39.7805</td>
+            <td align="right">-100.368</td>
+            <td align="right">2885</td>
+            <td align="right">31794</td>
+            <td align="right">16750</td>
+            <td align="right">24531</td>
+            <td align="right">30389</td>
+            <td align="right">43162</td>
+            <td align="right">39605</td>
+            <td align="right">36354</td>
+            <td align="right">20060</td>
+            <td align="right">32500</td>
+            <td align="right">35912</td>
+            <td align="right">55481</td>
+            <td align="right">38229</td>
+            <td align="right">23663</td>
+            <td align="right">0</td>
+            <td align="right">13250</td>
+            <td align="right">23266</td>
+            <td align="right">39167</td>
+            <td align="right">42292</td>
+            </tr>
+            <tr>
+            <td>Dickinson</td>
+            <td align="right">38.8391</td>
+            <td align="right">-97.0986</td>
+            <td align="right">18902</td>
+            <td align="right">32363</td>
+            <td align="right">24432</td>
+            <td align="right">27757</td>
+            <td align="right">32530</td>
+            <td align="right">40053</td>
+            <td align="right">46603</td>
+            <td align="right">39619</td>
+            <td align="right">31107</td>
+            <td align="right">34805</td>
+            <td align="right">40885</td>
+            <td align="right">50580</td>
+            <td align="right">52361</td>
+            <td align="right">24639</td>
+            <td align="right">10795</td>
+            <td align="right">21902</td>
+            <td align="right">25853</td>
+            <td align="right">34955</td>
+            <td align="right">40119</td>
+            </tr>
+            <tr>
+            <td>Doniphan</td>
+            <td align="right">39.7943</td>
+            <td align="right">-95.173</td>
+            <td align="right">7727</td>
+            <td align="right">35408</td>
+            <td align="right">35156</td>
+            <td align="right">32685</td>
+            <td align="right">31672</td>
+            <td align="right">39125</td>
+            <td align="right">45833</td>
+            <td align="right">40938</td>
+            <td align="right">40833</td>
+            <td align="right">39056</td>
+            <td align="right">40237</td>
+            <td align="right">48958</td>
+            <td align="right">70833</td>
+            <td align="right">26599</td>
+            <td align="right">19375</td>
+            <td align="right">22599</td>
+            <td align="right">26161</td>
+            <td align="right">35319</td>
+            <td align="right">41875</td>
+            </tr>
+            <tr>
+            <td>Douglas</td>
+            <td align="right">38.8971</td>
+            <td align="right">-95.2928</td>
+            <td align="right">120793</td>
+            <td align="right">39205</td>
+            <td align="right">19765</td>
+            <td align="right">30915</td>
+            <td align="right">30998</td>
+            <td align="right">43262</td>
+            <td align="right">53888</td>
+            <td align="right">44022</td>
+            <td align="right">20428</td>
+            <td align="right">35347</td>
+            <td align="right">35668</td>
+            <td align="right">51625</td>
+            <td align="right">67299</td>
+            <td align="right">35261</td>
+            <td align="right">16402</td>
+            <td align="right">22656</td>
+            <td align="right">27282</td>
+            <td align="right">37362</td>
+            <td align="right">47879</td>
+            </tr>
+            <tr>
+            <td>Edwards</td>
+            <td align="right">37.9224</td>
+            <td align="right">-99.3488</td>
+            <td align="right">2893</td>
+            <td align="right">36906</td>
+            <td align="right">32692</td>
+            <td align="right">29688</td>
+            <td align="right">38487</td>
+            <td align="right">41905</td>
+            <td align="right">44083</td>
+            <td align="right">42003</td>
+            <td align="right">38750</td>
+            <td align="right">38125</td>
+            <td align="right">42679</td>
+            <td align="right">47396</td>
+            <td align="right">91250</td>
+            <td align="right">27500</td>
+            <td align="right">11875</td>
+            <td align="right">20714</td>
+            <td align="right">27331</td>
+            <td align="right">37788</td>
+            <td align="right">43583</td>
+            </tr>
+            <tr>
+            <td>Elk</td>
+            <td align="right">37.3884</td>
+            <td align="right">-96.2885</td>
+            <td align="right">2498</td>
+            <td align="right">25186</td>
+            <td align="right">36625</td>
+            <td align="right">20819</td>
+            <td align="right">21339</td>
+            <td align="right">25938</td>
+            <td align="right">48333</td>
+            <td align="right">31848</td>
+            <td align="right">37500</td>
+            <td align="right">30150</td>
+            <td align="right">31047</td>
+            <td align="right">47500</td>
+            <td align="right">56786</td>
+            <td align="right">16677</td>
+            <td align="right">9063</td>
+            <td align="right">13281</td>
+            <td align="right">17045</td>
+            <td align="right">20250</td>
+            <td align="right">46250</td>
+            </tr>
+            <tr>
+            <td>Ellis</td>
+            <td align="right">38.8642</td>
+            <td align="right">-99.2863</td>
+            <td align="right">28689</td>
+            <td align="right">36637</td>
+            <td align="right">21838</td>
+            <td align="right">33507</td>
+            <td align="right">30138</td>
+            <td align="right">39666</td>
+            <td align="right">53389</td>
+            <td align="right">42926</td>
+            <td align="right">29703</td>
+            <td align="right">38580</td>
+            <td align="right">42895</td>
+            <td align="right">45820</td>
+            <td align="right">65142</td>
+            <td align="right">30702</td>
+            <td align="right">10689</td>
+            <td align="right">25147</td>
+            <td align="right">22736</td>
+            <td align="right">36021</td>
+            <td align="right">49205</td>
+            </tr>
+            <tr>
+            <td>Ellsworth</td>
+            <td align="right">38.6786</td>
+            <td align="right">-98.2619</td>
+            <td align="right">6330</td>
+            <td align="right">32406</td>
+            <td align="right">22031</td>
+            <td align="right">29148</td>
+            <td align="right">32550</td>
+            <td align="right">35957</td>
+            <td align="right">43056</td>
+            <td align="right">38293</td>
+            <td align="right">25347</td>
+            <td align="right">34732</td>
+            <td align="right">40278</td>
+            <td align="right">41583</td>
+            <td align="right">56000</td>
+            <td align="right">26799</td>
+            <td align="right">11800</td>
+            <td align="right">22763</td>
+            <td align="right">26875</td>
+            <td align="right">33942</td>
+            <td align="right">40804</td>
+            </tr>
+            <tr>
+            <td>Finney</td>
+            <td align="right">38.0016</td>
+            <td align="right">-100.7927</td>
+            <td align="right">37084</td>
+            <td align="right">34074</td>
+            <td align="right">28680</td>
+            <td align="right">30480</td>
+            <td align="right">33301</td>
+            <td align="right">48721</td>
+            <td align="right">51115</td>
+            <td align="right">39969</td>
+            <td align="right">32096</td>
+            <td align="right">37722</td>
+            <td align="right">43377</td>
+            <td align="right">53365</td>
+            <td align="right">61212</td>
+            <td align="right">26183</td>
+            <td align="right">21672</td>
+            <td align="right">22092</td>
+            <td align="right">25835</td>
+            <td align="right">38995</td>
+            <td align="right">48777</td>
+            </tr>
+            <tr>
+            <td>Ford</td>
+            <td align="right">37.7025</td>
+            <td align="right">-99.8406</td>
+            <td align="right">34381</td>
+            <td align="right">31862</td>
+            <td align="right">28026</td>
+            <td align="right">27480</td>
+            <td align="right">35155</td>
+            <td align="right">46098</td>
+            <td align="right">50756</td>
+            <td align="right">35506</td>
+            <td align="right">30427</td>
+            <td align="right">32109</td>
+            <td align="right">41330</td>
+            <td align="right">51916</td>
+            <td align="right">54167</td>
+            <td align="right">27662</td>
+            <td align="right">23243</td>
+            <td align="right">23644</td>
+            <td align="right">27411</td>
+            <td align="right">38859</td>
+            <td align="right">49744</td>
+            </tr>
+            <tr>
+            <td>Franklin</td>
+            <td align="right">38.5386</td>
+            <td align="right">-95.2693</td>
+            <td align="right">25733</td>
+            <td align="right">36134</td>
+            <td align="right">21033</td>
+            <td align="right">32086</td>
+            <td align="right">35786</td>
+            <td align="right">42442</td>
+            <td align="right">49383</td>
+            <td align="right">41186</td>
+            <td align="right">30063</td>
+            <td align="right">37748</td>
+            <td align="right">41648</td>
+            <td align="right">64048</td>
+            <td align="right">58958</td>
+            <td align="right">30380</td>
+            <td align="right">18750</td>
+            <td align="right">22542</td>
+            <td align="right">30598</td>
+            <td align="right">39181</td>
+            <td align="right">47679</td>
+            </tr>
+            <tr>
+            <td>Geary</td>
+            <td align="right">39.0894</td>
+            <td align="right">-96.8317</td>
+            <td align="right">33855</td>
+            <td align="right">34217</td>
+            <td align="right">17295</td>
+            <td align="right">29623</td>
+            <td align="right">34847</td>
+            <td align="right">42352</td>
+            <td align="right">47928</td>
+            <td align="right">40599</td>
+            <td align="right">25950</td>
+            <td align="right">36268</td>
+            <td align="right">40406</td>
+            <td align="right">49231</td>
+            <td align="right">73095</td>
+            <td align="right">23639</td>
+            <td align="right">12429</td>
+            <td align="right">22372</td>
+            <td align="right">19682</td>
+            <td align="right">35896</td>
+            <td align="right">36740</td>
+            </tr>
+            <tr>
+            <td>Gove</td>
+            <td align="right">39.0394</td>
+            <td align="right">-100.3553</td>
+            <td align="right">2631</td>
+            <td align="right">31703</td>
+            <td align="right">14141</td>
+            <td align="right">31207</td>
+            <td align="right">33472</td>
+            <td align="right">31625</td>
+            <td align="right">48542</td>
+            <td align="right">40808</td>
+            <td align="right">18125</td>
+            <td align="right">40461</td>
+            <td align="right">43250</td>
+            <td align="right">41042</td>
+            <td align="right">50833</td>
+            <td align="right">23929</td>
+            <td align="right">0</td>
+            <td align="right">20357</td>
+            <td align="right">26250</td>
+            <td align="right">26875</td>
+            <td align="right">41458</td>
+            </tr>
+            <tr>
+            <td>Graham</td>
+            <td align="right">39.3567</td>
+            <td align="right">-99.8942</td>
+            <td align="right">2495</td>
+            <td align="right">30955</td>
+            <td align="right">18500</td>
+            <td align="right">26208</td>
+            <td align="right">27891</td>
+            <td align="right">35000</td>
+            <td align="right">49500</td>
+            <td align="right">37071</td>
+            <td align="right">0</td>
+            <td align="right">34453</td>
+            <td align="right">35795</td>
+            <td align="right">43382</td>
+            <td align="right">49250</td>
+            <td align="right">22000</td>
+            <td align="right">11563</td>
+            <td align="right">17361</td>
+            <td align="right">22721</td>
+            <td align="right">27500</td>
+            <td align="right">53125</td>
+            </tr>
+            <tr>
+            <td>Grant</td>
+            <td align="right">37.5625</td>
+            <td align="right">-101.309</td>
+            <td align="right">7526</td>
+            <td align="right">38250</td>
+            <td align="right">32632</td>
+            <td align="right">32311</td>
+            <td align="right">40238</td>
+            <td align="right">38529</td>
+            <td align="right">65263</td>
+            <td align="right">47813</td>
+            <td align="right">45714</td>
+            <td align="right">49875</td>
+            <td align="right">47013</td>
+            <td align="right">47292</td>
+            <td align="right">53598</td>
+            <td align="right">25723</td>
+            <td align="right">18796</td>
+            <td align="right">17143</td>
+            <td align="right">28125</td>
+            <td align="right">37005</td>
+            <td align="right">105789</td>
+            </tr>
+            <tr>
+            <td>Gray</td>
+            <td align="right">37.7041</td>
+            <td align="right">-100.3728</td>
+            <td align="right">5958</td>
+            <td align="right">40090</td>
+            <td align="right">32044</td>
+            <td align="right">36085</td>
+            <td align="right">38846</td>
+            <td align="right">47125</td>
+            <td align="right">61000</td>
+            <td align="right">46995</td>
+            <td align="right">40263</td>
+            <td align="right">47000</td>
+            <td align="right">46543</td>
+            <td align="right">52308</td>
+            <td align="right">68281</td>
+            <td align="right">25591</td>
+            <td align="right">8393</td>
+            <td align="right">22778</td>
+            <td align="right">26359</td>
+            <td align="right">38365</td>
+            <td align="right">51406</td>
+            </tr>
+            <tr>
+            <td>Greeley</td>
+            <td align="right">38.4697</td>
+            <td align="right">-101.748</td>
+            <td align="right">1249</td>
+            <td align="right">30292</td>
+            <td align="right">25000</td>
+            <td align="right">25278</td>
+            <td align="right">33750</td>
+            <td align="right">36339</td>
+            <td align="right">27361</td>
+            <td align="right">35833</td>
+            <td align="right">29167</td>
+            <td align="right">35625</td>
+            <td align="right">40500</td>
+            <td align="right">40714</td>
+            <td align="right">30000</td>
+            <td align="right">23875</td>
+            <td align="right">21500</td>
+            <td align="right">15417</td>
+            <td align="right">31458</td>
+            <td align="right">30375</td>
+            <td align="right">0</td>
+            </tr>
+            <tr>
+            <td>Greenwood</td>
+            <td align="right">37.8814</td>
+            <td align="right">-96.1766</td>
+            <td align="right">6123</td>
+            <td align="right">26997</td>
+            <td align="right">17019</td>
+            <td align="right">24113</td>
+            <td align="right">26556</td>
+            <td align="right">36295</td>
+            <td align="right">45195</td>
+            <td align="right">35082</td>
+            <td align="right">51786</td>
+            <td align="right">30106</td>
+            <td align="right">32439</td>
+            <td align="right">50677</td>
+            <td align="right">41250</td>
+            <td align="right">21000</td>
+            <td align="right">15673</td>
+            <td align="right">16667</td>
+            <td align="right">21875</td>
+            <td align="right">32250</td>
+            <td align="right">45500</td>
+            </tr>
+            <tr>
+            <td>Hamilton</td>
+            <td align="right">37.9931</td>
+            <td align="right">-101.769</td>
+            <td align="right">2640</td>
+            <td align="right">32337</td>
+            <td align="right">31319</td>
+            <td align="right">27417</td>
+            <td align="right">29388</td>
+            <td align="right">41000</td>
+            <td align="right">46250</td>
+            <td align="right">40417</td>
+            <td align="right">34375</td>
+            <td align="right">40278</td>
+            <td align="right">36786</td>
+            <td align="right">41403</td>
+            <td align="right">51250</td>
+            <td align="right">26552</td>
+            <td align="right">0</td>
+            <td align="right">25873</td>
+            <td align="right">27542</td>
+            <td align="right">39750</td>
+            <td align="right">0</td>
+            </tr>
+            <tr>
+            <td>Harper</td>
+            <td align="right">37.1865</td>
+            <td align="right">-98.0183</td>
+            <td align="right">5590</td>
+            <td align="right">32768</td>
+            <td align="right">26875</td>
+            <td align="right">30827</td>
+            <td align="right">31520</td>
+            <td align="right">39231</td>
+            <td align="right">44500</td>
+            <td align="right">38862</td>
+            <td align="right">33824</td>
+            <td align="right">34750</td>
+            <td align="right">42885</td>
+            <td align="right">44167</td>
+            <td align="right">42250</td>
+            <td align="right">22849</td>
+            <td align="right">21607</td>
+            <td align="right">21125</td>
+            <td align="right">21250</td>
+            <td align="right">33571</td>
+            <td align="right">46563</td>
+            </tr>
+            <tr>
+            <td>Harvey</td>
+            <td align="right">38.0508</td>
+            <td align="right">-97.4116</td>
+            <td align="right">34544</td>
+            <td align="right">37178</td>
+            <td align="right">22308</td>
+            <td align="right">29653</td>
+            <td align="right">35449</td>
+            <td align="right">44727</td>
+            <td align="right">51446</td>
+            <td align="right">44418</td>
+            <td align="right">40095</td>
+            <td align="right">33207</td>
+            <td align="right">47097</td>
+            <td align="right">50250</td>
+            <td align="right">61607</td>
+            <td align="right">26936</td>
+            <td align="right">12604</td>
+            <td align="right">22321</td>
+            <td align="right">23843</td>
+            <td align="right">36376</td>
+            <td align="right">46380</td>
+            </tr>
+            <tr>
+            <td>Haskell</td>
+            <td align="right">37.554</td>
+            <td align="right">-100.784</td>
+            <td align="right">4053</td>
+            <td align="right">30625</td>
+            <td align="right">30069</td>
+            <td align="right">27847</td>
+            <td align="right">28456</td>
+            <td align="right">41174</td>
+            <td align="right">51979</td>
+            <td align="right">40212</td>
+            <td align="right">36938</td>
+            <td align="right">46250</td>
+            <td align="right">37000</td>
+            <td align="right">45625</td>
+            <td align="right">54464</td>
+            <td align="right">23158</td>
+            <td align="right">16563</td>
+            <td align="right">20833</td>
+            <td align="right">23866</td>
+            <td align="right">35833</td>
+            <td align="right">50833</td>
+            </tr>
+            <tr>
+            <td>Hodgeman</td>
+            <td align="right">38.0727</td>
+            <td align="right">-99.8016</td>
+            <td align="right">1842</td>
+            <td align="right">32264</td>
+            <td align="right">35625</td>
+            <td align="right">32000</td>
+            <td align="right">28944</td>
+            <td align="right">47000</td>
+            <td align="right">55962</td>
+            <td align="right">41372</td>
+            <td align="right">41429</td>
+            <td align="right">34205</td>
+            <td align="right">32107</td>
+            <td align="right">49911</td>
+            <td align="right">50833</td>
+            <td align="right">27500</td>
+            <td align="right">0</td>
+            <td align="right">23036</td>
+            <td align="right">26295</td>
+            <td align="right">32583</td>
+            <td align="right">56944</td>
+            </tr>
+            <tr>
+            <td>Jackson</td>
+            <td align="right">39.4485</td>
+            <td align="right">-95.7239</td>
+            <td align="right">13318</td>
+            <td align="right">36107</td>
+            <td align="right">17279</td>
+            <td align="right">32619</td>
+            <td align="right">33358</td>
+            <td align="right">43882</td>
+            <td align="right">51295</td>
+            <td align="right">40750</td>
+            <td align="right">29861</td>
+            <td align="right">38785</td>
+            <td align="right">41582</td>
+            <td align="right">44205</td>
+            <td align="right">54000</td>
+            <td align="right">29565</td>
+            <td align="right">0</td>
+            <td align="right">23689</td>
+            <td align="right">25520</td>
+            <td align="right">43438</td>
+            <td align="right">50543</td>
+            </tr>
+            <tr>
+            <td>Jefferson</td>
+            <td align="right">39.2257</td>
+            <td align="right">-95.3938</td>
+            <td align="right">18998</td>
+            <td align="right">40273</td>
+            <td align="right">30497</td>
+            <td align="right">38611</td>
+            <td align="right">36690</td>
+            <td align="right">43931</td>
+            <td align="right">59750</td>
+            <td align="right">46335</td>
+            <td align="right">31477</td>
+            <td align="right">47049</td>
+            <td align="right">45461</td>
+            <td align="right">43646</td>
+            <td align="right">76780</td>
+            <td align="right">32664</td>
+            <td align="right">19375</td>
+            <td align="right">27250</td>
+            <td align="right">31842</td>
+            <td align="right">44149</td>
+            <td align="right">52569</td>
+            </tr>
+            <tr>
+            <td>Jewell</td>
+            <td align="right">39.7746</td>
+            <td align="right">-98.1541</td>
+            <td align="right">2850</td>
+            <td align="right">30317</td>
+            <td align="right">27656</td>
+            <td align="right">28125</td>
+            <td align="right">29261</td>
+            <td align="right">42969</td>
+            <td align="right">39844</td>
+            <td align="right">38387</td>
+            <td align="right">28594</td>
+            <td align="right">35278</td>
+            <td align="right">37981</td>
+            <td align="right">63611</td>
+            <td align="right">0</td>
+            <td align="right">20404</td>
+            <td align="right">0</td>
+            <td align="right">14940</td>
+            <td align="right">22292</td>
+            <td align="right">19886</td>
+            <td align="right">0</td>
+            </tr>
+            <tr>
+            <td>Johnson</td>
+            <td align="right">38.9256</td>
+            <td align="right">-94.7758</td>
+            <td align="right">591178</td>
+            <td align="right">48850</td>
+            <td align="right">23418</td>
+            <td align="right">30829</td>
+            <td align="right">38070</td>
+            <td align="right">57171</td>
+            <td align="right">72428</td>
+            <td align="right">60912</td>
+            <td align="right">27215</td>
+            <td align="right">35873</td>
+            <td align="right">44144</td>
+            <td align="right">75655</td>
+            <td align="right">92668</td>
+            <td align="right">40177</td>
+            <td align="right">18522</td>
+            <td align="right">25241</td>
+            <td align="right">32943</td>
+            <td align="right">43259</td>
+            <td align="right">56602</td>
+            </tr>
+            <tr>
+            <td>Kearny</td>
+            <td align="right">37.9518</td>
+            <td align="right">-101.228</td>
+            <td align="right">3960</td>
+            <td align="right">34155</td>
+            <td align="right">31895</td>
+            <td align="right">35028</td>
+            <td align="right">27976</td>
+            <td align="right">37054</td>
+            <td align="right">60357</td>
+            <td align="right">40265</td>
+            <td align="right">41809</td>
+            <td align="right">40610</td>
+            <td align="right">35644</td>
+            <td align="right">60288</td>
+            <td align="right">0</td>
+            <td align="right">24050</td>
+            <td align="right">15682</td>
+            <td align="right">21389</td>
+            <td align="right">21375</td>
+            <td align="right">36071</td>
+            <td align="right">61875</td>
+            </tr>
+            <tr>
+            <td>Kingman</td>
+            <td align="right">37.535</td>
+            <td align="right">-98.183</td>
+            <td align="right">7360</td>
+            <td align="right">34506</td>
+            <td align="right">23207</td>
+            <td align="right">30656</td>
+            <td align="right">33625</td>
+            <td align="right">40086</td>
+            <td align="right">44375</td>
+            <td align="right">42739</td>
+            <td align="right">57019</td>
+            <td align="right">40532</td>
+            <td align="right">41406</td>
+            <td align="right">52321</td>
+            <td align="right">68750</td>
+            <td align="right">25097</td>
+            <td align="right">15795</td>
+            <td align="right">18563</td>
+            <td align="right">25739</td>
+            <td align="right">31016</td>
+            <td align="right">40313</td>
+            </tr>
+            <tr>
+            <td>Kiowa</td>
+            <td align="right">37.6044</td>
+            <td align="right">-99.2618</td>
+            <td align="right">2485</td>
+            <td align="right">32324</td>
+            <td align="right">20139</td>
+            <td align="right">31037</td>
+            <td align="right">31223</td>
+            <td align="right">34444</td>
+            <td align="right">41759</td>
+            <td align="right">38984</td>
+            <td align="right">0</td>
+            <td align="right">32165</td>
+            <td align="right">41971</td>
+            <td align="right">55417</td>
+            <td align="right">42232</td>
+            <td align="right">26250</td>
+            <td align="right">20556</td>
+            <td align="right">25147</td>
+            <td align="right">25278</td>
+            <td align="right">30050</td>
+            <td align="right">41250</td>
+            </tr>
+            <tr>
+            <td>Labette</td>
+            <td align="right">37.1535</td>
+            <td align="right">-95.3152</td>
+            <td align="right">20145</td>
+            <td align="right">31686</td>
+            <td align="right">21786</td>
+            <td align="right">27751</td>
+            <td align="right">30920</td>
+            <td align="right">43851</td>
+            <td align="right">44415</td>
+            <td align="right">36527</td>
+            <td align="right">29509</td>
+            <td align="right">32701</td>
+            <td align="right">37708</td>
+            <td align="right">53750</td>
+            <td align="right">35536</td>
+            <td align="right">26287</td>
+            <td align="right">16058</td>
+            <td align="right">22754</td>
+            <td align="right">24557</td>
+            <td align="right">37172</td>
+            <td align="right">52148</td>
+            </tr>
+            <tr>
+            <td>Lane</td>
+            <td align="right">38.5266</td>
+            <td align="right">-100.533</td>
+            <td align="right">1559</td>
+            <td align="right">31681</td>
+            <td align="right">31875</td>
+            <td align="right">24844</td>
+            <td align="right">31394</td>
+            <td align="right">42991</td>
+            <td align="right">37639</td>
+            <td align="right">40602</td>
+            <td align="right">32232</td>
+            <td align="right">40114</td>
+            <td align="right">39625</td>
+            <td align="right">44886</td>
+            <td align="right">73500</td>
+            <td align="right">21738</td>
+            <td align="right">0</td>
+            <td align="right">14375</td>
+            <td align="right">23011</td>
+            <td align="right">0</td>
+            <td align="right">36375</td>
+            </tr>
+            <tr>
+            <td>Leavenworth</td>
+            <td align="right">39.2079</td>
+            <td align="right">-94.9978</td>
+            <td align="right">81095</td>
+            <td align="right">40276</td>
+            <td align="right">25099</td>
+            <td align="right">32087</td>
+            <td align="right">34389</td>
+            <td align="right">52802</td>
+            <td align="right">75949</td>
+            <td align="right">48915</td>
+            <td align="right">29229</td>
+            <td align="right">36363</td>
+            <td align="right">41338</td>
+            <td align="right">64534</td>
+            <td align="right">88380</td>
+            <td align="right">32489</td>
+            <td align="right">20635</td>
+            <td align="right">27795</td>
+            <td align="right">30967</td>
+            <td align="right">41452</td>
+            <td align="right">52660</td>
+            </tr>
+            <tr>
+            <td>Lincoln</td>
+            <td align="right">39.1188</td>
+            <td align="right">-98.2676</td>
+            <td align="right">3043</td>
+            <td align="right">30786</td>
+            <td align="right">21563</td>
+            <td align="right">23021</td>
+            <td align="right">30091</td>
+            <td align="right">34766</td>
+            <td align="right">47500</td>
+            <td align="right">38015</td>
+            <td align="right">22292</td>
+            <td align="right">36346</td>
+            <td align="right">39063</td>
+            <td align="right">40833</td>
+            <td align="right">45833</td>
+            <td align="right">22465</td>
+            <td align="right">18542</td>
+            <td align="right">14653</td>
+            <td align="right">22472</td>
+            <td align="right">31250</td>
+            <td align="right">47885</td>
+            </tr>
+            <tr>
+            <td>Linn</td>
+            <td align="right">38.2179</td>
+            <td align="right">-94.7962</td>
+            <td align="right">9726</td>
+            <td align="right">37206</td>
+            <td align="right">26979</td>
+            <td align="right">38542</td>
+            <td align="right">33373</td>
+            <td align="right">44662</td>
+            <td align="right">45662</td>
+            <td align="right">43831</td>
+            <td align="right">27368</td>
+            <td align="right">43012</td>
+            <td align="right">48048</td>
+            <td align="right">53235</td>
+            <td align="right">60729</td>
+            <td align="right">30456</td>
+            <td align="right">25500</td>
+            <td align="right">22194</td>
+            <td align="right">29467</td>
+            <td align="right">39634</td>
+            <td align="right">45147</td>
+            </tr>
+            <tr>
+            <td>Logan</td>
+            <td align="right">38.9713</td>
+            <td align="right">-101.0427</td>
+            <td align="right">2821</td>
+            <td align="right">30465</td>
+            <td align="right">0</td>
+            <td align="right">27625</td>
+            <td align="right">29137</td>
+            <td align="right">39375</td>
+            <td align="right">47794</td>
+            <td align="right">35745</td>
+            <td align="right">25000</td>
+            <td align="right">32125</td>
+            <td align="right">33333</td>
+            <td align="right">45875</td>
+            <td align="right">0</td>
+            <td align="right">24815</td>
+            <td align="right">6680</td>
+            <td align="right">17188</td>
+            <td align="right">27765</td>
+            <td align="right">34659</td>
+            <td align="right">43000</td>
+            </tr>
+            <tr>
+            <td>Lyon</td>
+            <td align="right">38.4871</td>
+            <td align="right">-96.1386</td>
+            <td align="right">33392</td>
+            <td align="right">31741</td>
+            <td align="right">26559</td>
+            <td align="right">28117</td>
+            <td align="right">31871</td>
+            <td align="right">37430</td>
+            <td align="right">50644</td>
+            <td align="right">37028</td>
+            <td align="right">29167</td>
+            <td align="right">31103</td>
+            <td align="right">40463</td>
+            <td align="right">43421</td>
+            <td align="right">62875</td>
+            <td align="right">27367</td>
+            <td align="right">21406</td>
+            <td align="right">21547</td>
+            <td align="right">26156</td>
+            <td align="right">34428</td>
+            <td align="right">44565</td>
+            </tr>
+            <tr>
+            <td>McPherson</td>
+            <td align="right">38.379</td>
+            <td align="right">-97.611</td>
+            <td align="right">28708</td>
+            <td align="right">36935</td>
+            <td align="right">29355</td>
+            <td align="right">33211</td>
+            <td align="right">32557</td>
+            <td align="right">47134</td>
+            <td align="right">50593</td>
+            <td align="right">47554</td>
+            <td align="right">36833</td>
+            <td align="right">41482</td>
+            <td align="right">45492</td>
+            <td align="right">54605</td>
+            <td align="right">54662</td>
+            <td align="right">28197</td>
+            <td align="right">11417</td>
+            <td align="right">25372</td>
+            <td align="right">26459</td>
+            <td align="right">36497</td>
+            <td align="right">46250</td>
+            </tr>
+            <tr>
+            <td>Marion</td>
+            <td align="right">38.3962</td>
+            <td align="right">-97.0894</td>
+            <td align="right">11986</td>
+            <td align="right">32189</td>
+            <td align="right">21600</td>
+            <td align="right">30989</td>
+            <td align="right">31263</td>
+            <td align="right">36505</td>
+            <td align="right">42273</td>
+            <td align="right">42200</td>
+            <td align="right">31042</td>
+            <td align="right">41551</td>
+            <td align="right">47917</td>
+            <td align="right">43676</td>
+            <td align="right">50769</td>
+            <td align="right">24910</td>
+            <td align="right">16979</td>
+            <td align="right">21615</td>
+            <td align="right">25644</td>
+            <td align="right">31189</td>
+            <td align="right">41333</td>
+            </tr>
+            <tr>
+            <td>Marshall</td>
+            <td align="right">39.8294</td>
+            <td align="right">-96.5399</td>
+            <td align="right">9745</td>
+            <td align="right">32228</td>
+            <td align="right">26250</td>
+            <td align="right">30559</td>
+            <td align="right">31727</td>
+            <td align="right">36587</td>
+            <td align="right">46750</td>
+            <td align="right">40064</td>
+            <td align="right">28967</td>
+            <td align="right">39964</td>
+            <td align="right">41250</td>
+            <td align="right">37461</td>
+            <td align="right">52969</td>
+            <td align="right">26642</td>
+            <td align="right">0</td>
+            <td align="right">21226</td>
+            <td align="right">26085</td>
+            <td align="right">35685</td>
+            <td align="right">41944</td>
+            </tr>
+            <tr>
+            <td>Meade</td>
+            <td align="right">37.2534</td>
+            <td align="right">-100.321</td>
+            <td align="right">4303</td>
+            <td align="right">39621</td>
+            <td align="right">34545</td>
+            <td align="right">31836</td>
+            <td align="right">37672</td>
+            <td align="right">50192</td>
+            <td align="right">50556</td>
+            <td align="right">45302</td>
+            <td align="right">44044</td>
+            <td align="right">40357</td>
+            <td align="right">42098</td>
+            <td align="right">62344</td>
+            <td align="right">75938</td>
+            <td align="right">25417</td>
+            <td align="right">18942</td>
+            <td align="right">21354</td>
+            <td align="right">25739</td>
+            <td align="right">35625</td>
+            <td align="right">45833</td>
+            </tr>
+            <tr>
+            <td>Miami</td>
+            <td align="right">38.5635</td>
+            <td align="right">-94.8061</td>
+            <td align="right">33461</td>
+            <td align="right">41154</td>
+            <td align="right">27819</td>
+            <td align="right">35443</td>
+            <td align="right">39030</td>
+            <td align="right">50864</td>
+            <td align="right">70759</td>
+            <td align="right">51060</td>
+            <td align="right">29583</td>
+            <td align="right">41590</td>
+            <td align="right">50917</td>
+            <td align="right">61625</td>
+            <td align="right">100703</td>
+            <td align="right">32290</td>
+            <td align="right">13269</td>
+            <td align="right">26397</td>
+            <td align="right">29695</td>
+            <td align="right">39632</td>
+            <td align="right">63686</td>
+            </tr>
+            <tr>
+            <td>Mitchell</td>
+            <td align="right">39.4333</td>
+            <td align="right">-98.2698</td>
+            <td align="right">6128</td>
+            <td align="right">31927</td>
+            <td align="right">26667</td>
+            <td align="right">29329</td>
+            <td align="right">31063</td>
+            <td align="right">35270</td>
+            <td align="right">48724</td>
+            <td align="right">36833</td>
+            <td align="right">0</td>
+            <td align="right">31875</td>
+            <td align="right">37004</td>
+            <td align="right">41071</td>
+            <td align="right">49939</td>
+            <td align="right">25556</td>
+            <td align="right">0</td>
+            <td align="right">25250</td>
+            <td align="right">22578</td>
+            <td align="right">27721</td>
+            <td align="right">36397</td>
+            </tr>
+            <tr>
+            <td>Montgomery</td>
+            <td align="right">37.1462</td>
+            <td align="right">-95.7936</td>
+            <td align="right">32556</td>
+            <td align="right">30605</td>
+            <td align="right">21366</td>
+            <td align="right">28661</td>
+            <td align="right">28869</td>
+            <td align="right">39763</td>
+            <td align="right">43438</td>
+            <td align="right">37017</td>
+            <td align="right">27012</td>
+            <td align="right">35867</td>
+            <td align="right">37669</td>
+            <td align="right">45256</td>
+            <td align="right">50917</td>
+            <td align="right">24237</td>
+            <td align="right">12625</td>
+            <td align="right">18255</td>
+            <td align="right">24061</td>
+            <td align="right">37593</td>
+            <td align="right">36458</td>
+            </tr>
+            <tr>
+            <td>Morris</td>
+            <td align="right">38.7107</td>
+            <td align="right">-96.6743</td>
+            <td align="right">5455</td>
+            <td align="right">33663</td>
+            <td align="right">20076</td>
+            <td align="right">27708</td>
+            <td align="right">36612</td>
+            <td align="right">40096</td>
+            <td align="right">46750</td>
+            <td align="right">41959</td>
+            <td align="right">17100</td>
+            <td align="right">33981</td>
+            <td align="right">46845</td>
+            <td align="right">44514</td>
+            <td align="right">95278</td>
+            <td align="right">23889</td>
+            <td align="right">20862</td>
+            <td align="right">19180</td>
+            <td align="right">24868</td>
+            <td align="right">27083</td>
+            <td align="right">43281</td>
+            </tr>
+            <tr>
+            <td>Morton</td>
+            <td align="right">37.0921</td>
+            <td align="right">-101.767</td>
+            <td align="right">2740</td>
+            <td align="right">38194</td>
+            <td align="right">34000</td>
+            <td align="right">28092</td>
+            <td align="right">40625</td>
+            <td align="right">74375</td>
+            <td align="right">53750</td>
+            <td align="right">41504</td>
+            <td align="right">39213</td>
+            <td align="right">32841</td>
+            <td align="right">43875</td>
+            <td align="right">76635</td>
+            <td align="right">72917</td>
+            <td align="right">26033</td>
+            <td align="right">11083</td>
+            <td align="right">21000</td>
+            <td align="right">27596</td>
+            <td align="right">36250</td>
+            <td align="right">52656</td>
+            </tr>
+            <tr>
+            <td>Nemaha</td>
+            <td align="right">39.7754</td>
+            <td align="right">-95.9618</td>
+            <td align="right">10118</td>
+            <td align="right">35112</td>
+            <td align="right">21818</td>
+            <td align="right">31201</td>
+            <td align="right">33097</td>
+            <td align="right">41306</td>
+            <td align="right">51458</td>
+            <td align="right">42866</td>
+            <td align="right">29261</td>
+            <td align="right">39386</td>
+            <td align="right">40833</td>
+            <td align="right">51250</td>
+            <td align="right">81875</td>
+            <td align="right">26541</td>
+            <td align="right">12788</td>
+            <td align="right">22059</td>
+            <td align="right">25198</td>
+            <td align="right">30823</td>
+            <td align="right">50192</td>
+            </tr>
+            <tr>
+            <td>Neosho</td>
+            <td align="right">37.5604</td>
+            <td align="right">-95.3169</td>
+            <td align="right">16015</td>
+            <td align="right">29875</td>
+            <td align="right">23571</td>
+            <td align="right">26871</td>
+            <td align="right">26911</td>
+            <td align="right">41389</td>
+            <td align="right">55134</td>
+            <td align="right">36058</td>
+            <td align="right">30635</td>
+            <td align="right">32412</td>
+            <td align="right">33892</td>
+            <td align="right">49775</td>
+            <td align="right">60859</td>
+            <td align="right">24786</td>
+            <td align="right">8750</td>
+            <td align="right">19918</td>
+            <td align="right">24015</td>
+            <td align="right">33147</td>
+            <td align="right">54219</td>
+            </tr>
+            <tr>
+            <td>Ness</td>
+            <td align="right">38.5169</td>
+            <td align="right">-99.9215</td>
+            <td align="right">2869</td>
+            <td align="right">34423</td>
+            <td align="right">31705</td>
+            <td align="right">31786</td>
+            <td align="right">29500</td>
+            <td align="right">41375</td>
+            <td align="right">55417</td>
+            <td align="right">42394</td>
+            <td align="right">43125</td>
+            <td align="right">41389</td>
+            <td align="right">37500</td>
+            <td align="right">46042</td>
+            <td align="right">60625</td>
+            <td align="right">22396</td>
+            <td align="right">5089</td>
+            <td align="right">21375</td>
+            <td align="right">23750</td>
+            <td align="right">19875</td>
+            <td align="right">43125</td>
+            </tr>
+            <tr>
+            <td>Norton</td>
+            <td align="right">39.7785</td>
+            <td align="right">-99.8773</td>
+            <td align="right">5441</td>
+            <td align="right">28500</td>
+            <td align="right">25653</td>
+            <td align="right">20057</td>
+            <td align="right">30469</td>
+            <td align="right">36923</td>
+            <td align="right">0</td>
+            <td align="right">34928</td>
+            <td align="right">26597</td>
+            <td align="right">30000</td>
+            <td align="right">35806</td>
+            <td align="right">50208</td>
+            <td align="right">0</td>
+            <td align="right">25724</td>
+            <td align="right">25000</td>
+            <td align="right">12778</td>
+            <td align="right">27370</td>
+            <td align="right">36538</td>
+            <td align="right">45972</td>
+            </tr>
+            <tr>
+            <td>Osage</td>
+            <td align="right">38.6722</td>
+            <td align="right">-95.6592</td>
+            <td align="right">15772</td>
+            <td align="right">34555</td>
+            <td align="right">20036</td>
+            <td align="right">28616</td>
+            <td align="right">35180</td>
+            <td align="right">40266</td>
+            <td align="right">54333</td>
+            <td align="right">40942</td>
+            <td align="right">23065</td>
+            <td align="right">40238</td>
+            <td align="right">44575</td>
+            <td align="right">42278</td>
+            <td align="right">53750</td>
+            <td align="right">29888</td>
+            <td align="right">12094</td>
+            <td align="right">20845</td>
+            <td align="right">30045</td>
+            <td align="right">38805</td>
+            <td align="right">54333</td>
+            </tr>
+            <tr>
+            <td>Osborne</td>
+            <td align="right">39.405</td>
+            <td align="right">-98.7979</td>
+            <td align="right">3610</td>
+            <td align="right">29326</td>
+            <td align="right">22500</td>
+            <td align="right">24222</td>
+            <td align="right">28110</td>
+            <td align="right">43095</td>
+            <td align="right">46354</td>
+            <td align="right">34954</td>
+            <td align="right">30781</td>
+            <td align="right">24962</td>
+            <td align="right">34545</td>
+            <td align="right">57917</td>
+            <td align="right">66477</td>
+            <td align="right">22365</td>
+            <td align="right">4338</td>
+            <td align="right">23000</td>
+            <td align="right">21492</td>
+            <td align="right">32500</td>
+            <td align="right">39722</td>
+            </tr>
+            <tr>
+            <td>Ottawa</td>
+            <td align="right">39.1164</td>
+            <td align="right">-97.6767</td>
+            <td align="right">5863</td>
+            <td align="right">33750</td>
+            <td align="right">16563</td>
+            <td align="right">29743</td>
+            <td align="right">34647</td>
+            <td align="right">41176</td>
+            <td align="right">47500</td>
+            <td align="right">41596</td>
+            <td align="right">24063</td>
+            <td align="right">34417</td>
+            <td align="right">44048</td>
+            <td align="right">51786</td>
+            <td align="right">37422</td>
+            <td align="right">28275</td>
+            <td align="right">14375</td>
+            <td align="right">20313</td>
+            <td align="right">29479</td>
+            <td align="right">32083</td>
+            <td align="right">48125</td>
+            </tr>
+            <tr>
+            <td>Pawnee</td>
+            <td align="right">38.1518</td>
+            <td align="right">-99.2837</td>
+            <td align="right">6680</td>
+            <td align="right">27459</td>
+            <td align="right">17737</td>
+            <td align="right">25179</td>
+            <td align="right">32146</td>
+            <td align="right">38011</td>
+            <td align="right">34522</td>
+            <td align="right">28194</td>
+            <td align="right">0</td>
+            <td align="right">25877</td>
+            <td align="right">35638</td>
+            <td align="right">36103</td>
+            <td align="right">59107</td>
+            <td align="right">25435</td>
+            <td align="right">19158</td>
+            <td align="right">16850</td>
+            <td align="right">28750</td>
+            <td align="right">40650</td>
+            <td align="right">28750</td>
+            </tr>
+            <tr>
+            <td>Phillips</td>
+            <td align="right">39.7423</td>
+            <td align="right">-99.3457</td>
+            <td align="right">5370</td>
+            <td align="right">30288</td>
+            <td align="right">27679</td>
+            <td align="right">23429</td>
+            <td align="right">30201</td>
+            <td align="right">38962</td>
+            <td align="right">43958</td>
+            <td align="right">37995</td>
+            <td align="right">35265</td>
+            <td align="right">30208</td>
+            <td align="right">42875</td>
+            <td align="right">44934</td>
+            <td align="right">54583</td>
+            <td align="right">22012</td>
+            <td align="right">0</td>
+            <td align="right">16354</td>
+            <td align="right">22500</td>
+            <td align="right">29688</td>
+            <td align="right">39632</td>
+            </tr>
+            <tr>
+            <td>Pottawatomie</td>
+            <td align="right">39.3623</td>
+            <td align="right">-96.3277</td>
+            <td align="right">23908</td>
+            <td align="right">40922</td>
+            <td align="right">21429</td>
+            <td align="right">33118</td>
+            <td align="right">39647</td>
+            <td align="right">42793</td>
+            <td align="right">62015</td>
+            <td align="right">48676</td>
+            <td align="right">20966</td>
+            <td align="right">39289</td>
+            <td align="right">50082</td>
+            <td align="right">59063</td>
+            <td align="right">73438</td>
+            <td align="right">32496</td>
+            <td align="right">23882</td>
+            <td align="right">24239</td>
+            <td align="right">30383</td>
+            <td align="right">35201</td>
+            <td align="right">52412</td>
+            </tr>
+            <tr>
+            <td>Pratt</td>
+            <td align="right">37.6639</td>
+            <td align="right">-98.7967</td>
+            <td align="right">9547</td>
+            <td align="right">32593</td>
+            <td align="right">25231</td>
+            <td align="right">27457</td>
+            <td align="right">31727</td>
+            <td align="right">42228</td>
+            <td align="right">54600</td>
+            <td align="right">42050</td>
+            <td align="right">26471</td>
+            <td align="right">30083</td>
+            <td align="right">45431</td>
+            <td align="right">51585</td>
+            <td align="right">56806</td>
+            <td align="right">27701</td>
+            <td align="right">15179</td>
+            <td align="right">17054</td>
+            <td align="right">25923</td>
+            <td align="right">31995</td>
+            <td align="right">53250</td>
+            </tr>
+            <tr>
+            <td>Rawlins</td>
+            <td align="right">39.8262</td>
+            <td align="right">-101.068</td>
+            <td align="right">2497</td>
+            <td align="right">31357</td>
+            <td align="right">0</td>
+            <td align="right">29940</td>
+            <td align="right">30844</td>
+            <td align="right">32337</td>
+            <td align="right">46250</td>
+            <td align="right">36830</td>
+            <td align="right">0</td>
+            <td align="right">31842</td>
+            <td align="right">35469</td>
+            <td align="right">48750</td>
+            <td align="right">47813</td>
+            <td align="right">25188</td>
+            <td align="right">0</td>
+            <td align="right">22986</td>
+            <td align="right">28000</td>
+            <td align="right">23672</td>
+            <td align="right">46193</td>
+            </tr>
+            <tr>
+            <td>Reno</td>
+            <td align="right">37.9736</td>
+            <td align="right">-98.04</td>
+            <td align="right">62510</td>
+            <td align="right">31143</td>
+            <td align="right">18722</td>
+            <td align="right">27918</td>
+            <td align="right">29596</td>
+            <td align="right">42494</td>
+            <td align="right">51250</td>
+            <td align="right">39409</td>
+            <td align="right">25352</td>
+            <td align="right">35448</td>
+            <td align="right">40821</td>
+            <td align="right">46513</td>
+            <td align="right">65682</td>
+            <td align="right">24862</td>
+            <td align="right">8477</td>
+            <td align="right">21466</td>
+            <td align="right">23955</td>
+            <td align="right">35354</td>
+            <td align="right">48418</td>
+            </tr>
+            <tr>
+            <td>Republic</td>
+            <td align="right">39.8225</td>
+            <td align="right">-97.564</td>
+            <td align="right">4691</td>
+            <td align="right">30591</td>
+            <td align="right">19583</td>
+            <td align="right">30386</td>
+            <td align="right">27454</td>
+            <td align="right">36000</td>
+            <td align="right">35000</td>
+            <td align="right">35991</td>
+            <td align="right">19861</td>
+            <td align="right">34643</td>
+            <td align="right">38750</td>
+            <td align="right">41094</td>
+            <td align="right">28375</td>
+            <td align="right">24364</td>
+            <td align="right">13750</td>
+            <td align="right">19191</td>
+            <td align="right">22566</td>
+            <td align="right">29844</td>
+            <td align="right">51875</td>
+            </tr>
+            <tr>
+            <td>Rice</td>
+            <td align="right">38.3336</td>
+            <td align="right">-98.2466</td>
+            <td align="right">9660</td>
+            <td align="right">33843</td>
+            <td align="right">20054</td>
+            <td align="right">29792</td>
+            <td align="right">34441</td>
+            <td align="right">35864</td>
+            <td align="right">47414</td>
+            <td align="right">41162</td>
+            <td align="right">30598</td>
+            <td align="right">40241</td>
+            <td align="right">42625</td>
+            <td align="right">36528</td>
+            <td align="right">53828</td>
+            <td align="right">27731</td>
+            <td align="right">18021</td>
+            <td align="right">21875</td>
+            <td align="right">26780</td>
+            <td align="right">35597</td>
+            <td align="right">45868</td>
+            </tr>
+            <tr>
+            <td>Riley</td>
+            <td align="right">39.3034</td>
+            <td align="right">-96.7049</td>
+            <td align="right">74172</td>
+            <td align="right">35569</td>
+            <td align="right">20803</td>
+            <td align="right">29815</td>
+            <td align="right">30942</td>
+            <td align="right">40753</td>
+            <td align="right">54389</td>
+            <td align="right">40498</td>
+            <td align="right">25714</td>
+            <td align="right">31735</td>
+            <td align="right">34569</td>
+            <td align="right">50546</td>
+            <td align="right">62074</td>
+            <td align="right">30575</td>
+            <td align="right">10833</td>
+            <td align="right">24697</td>
+            <td align="right">25237</td>
+            <td align="right">32160</td>
+            <td align="right">46001</td>
+            </tr>
+            <tr>
+            <td>Rooks</td>
+            <td align="right">39.3255</td>
+            <td align="right">-99.3352</td>
+            <td align="right">5043</td>
+            <td align="right">29050</td>
+            <td align="right">22355</td>
+            <td align="right">25068</td>
+            <td align="right">33871</td>
+            <td align="right">31806</td>
+            <td align="right">49107</td>
+            <td align="right">36438</td>
+            <td align="right">26094</td>
+            <td align="right">27115</td>
+            <td align="right">41131</td>
+            <td align="right">42361</td>
+            <td align="right">73750</td>
+            <td align="right">24327</td>
+            <td align="right">20875</td>
+            <td align="right">16000</td>
+            <td align="right">22917</td>
+            <td align="right">27500</td>
+            <td align="right">35250</td>
+            </tr>
+            <tr>
+            <td>Rush</td>
+            <td align="right">38.5282</td>
+            <td align="right">-99.2738</td>
+            <td align="right">3103</td>
+            <td align="right">30930</td>
+            <td align="right">15521</td>
+            <td align="right">25313</td>
+            <td align="right">30913</td>
+            <td align="right">45000</td>
+            <td align="right">41875</td>
+            <td align="right">41193</td>
+            <td align="right">0</td>
+            <td align="right">37083</td>
+            <td align="right">42609</td>
+            <td align="right">60441</td>
+            <td align="right">60536</td>
+            <td align="right">20762</td>
+            <td align="right">16136</td>
+            <td align="right">16490</td>
+            <td align="right">21208</td>
+            <td align="right">35000</td>
+            <td align="right">33125</td>
+            </tr>
+            <tr>
+            <td>Russell</td>
+            <td align="right">38.9607</td>
+            <td align="right">-98.7973</td>
+            <td align="right">6915</td>
+            <td align="right">31260</td>
+            <td align="right">20000</td>
+            <td align="right">27614</td>
+            <td align="right">35745</td>
+            <td align="right">32121</td>
+            <td align="right">45188</td>
+            <td align="right">43892</td>
+            <td align="right">0</td>
+            <td align="right">32209</td>
+            <td align="right">51467</td>
+            <td align="right">40489</td>
+            <td align="right">68636</td>
+            <td align="right">24084</td>
+            <td align="right">22906</td>
+            <td align="right">21500</td>
+            <td align="right">23544</td>
+            <td align="right">30806</td>
+            <td align="right">40714</td>
+            </tr>
+            <tr>
+            <td>Saline</td>
+            <td align="right">38.7696</td>
+            <td align="right">-97.6481</td>
+            <td align="right">54734</td>
+            <td align="right">34559</td>
+            <td align="right">28422</td>
+            <td align="right">29958</td>
+            <td align="right">31798</td>
+            <td align="right">44521</td>
+            <td align="right">58325</td>
+            <td align="right">40343</td>
+            <td align="right">31126</td>
+            <td align="right">34824</td>
+            <td align="right">41068</td>
+            <td align="right">54510</td>
+            <td align="right">70064</td>
+            <td align="right">29504</td>
+            <td align="right">22622</td>
+            <td align="right">24131</td>
+            <td align="right">25809</td>
+            <td align="right">38962</td>
+            <td align="right">52232</td>
+            </tr>
+            <tr>
+            <td>Sedgwick</td>
+            <td align="right">37.683</td>
+            <td align="right">-97.3872</td>
+            <td align="right">513687</td>
+            <td align="right">36793</td>
+            <td align="right">24723</td>
+            <td align="right">29219</td>
+            <td align="right">33961</td>
+            <td align="right">47663</td>
+            <td align="right">59014</td>
+            <td align="right">45345</td>
+            <td align="right">31088</td>
+            <td align="right">36227</td>
+            <td align="right">42404</td>
+            <td align="right">61072</td>
+            <td align="right">72017</td>
+            <td align="right">29307</td>
+            <td align="right">16901</td>
+            <td align="right">23218</td>
+            <td align="right">27422</td>
+            <td align="right">37256</td>
+            <td align="right">51255</td>
+            </tr>
+            <tr>
+            <td>Seward</td>
+            <td align="right">37.0897</td>
+            <td align="right">-100.8377</td>
+            <td align="right">22159</td>
+            <td align="right">31024</td>
+            <td align="right">26413</td>
+            <td align="right">30126</td>
+            <td align="right">34587</td>
+            <td align="right">51178</td>
+            <td align="right">60125</td>
+            <td align="right">34149</td>
+            <td align="right">29868</td>
+            <td align="right">36382</td>
+            <td align="right">41463</td>
+            <td align="right">53261</td>
+            <td align="right">77353</td>
+            <td align="right">26136</td>
+            <td align="right">23533</td>
+            <td align="right">15022</td>
+            <td align="right">27277</td>
+            <td align="right">45337</td>
+            <td align="right">48456</td>
+            </tr>
+            <tr>
+            <td>Shawnee</td>
+            <td align="right">39.0335</td>
+            <td align="right">-95.7373</td>
+            <td align="right">178187</td>
+            <td align="right">37499</td>
+            <td align="right">20030</td>
+            <td align="right">29558</td>
+            <td align="right">35629</td>
+            <td align="right">47014</td>
+            <td align="right">57426</td>
+            <td align="right">42494</td>
+            <td align="right">23258</td>
+            <td align="right">35606</td>
+            <td align="right">41212</td>
+            <td align="right">57451</td>
+            <td align="right">67519</td>
+            <td align="right">33759</td>
+            <td align="right">15588</td>
+            <td align="right">24578</td>
+            <td align="right">31952</td>
+            <td align="right">41246</td>
+            <td align="right">51432</td>
+            </tr>
+            <tr>
+            <td>Sheridan</td>
+            <td align="right">39.3407</td>
+            <td align="right">-100.547</td>
+            <td align="right">2527</td>
+            <td align="right">35664</td>
+            <td align="right">0</td>
+            <td align="right">29145</td>
+            <td align="right">36836</td>
+            <td align="right">43448</td>
+            <td align="right">42344</td>
+            <td align="right">43654</td>
+            <td align="right">35833</td>
+            <td align="right">32361</td>
+            <td align="right">46354</td>
+            <td align="right">60769</td>
+            <td align="right">62917</td>
+            <td align="right">26944</td>
+            <td align="right">0</td>
+            <td align="right">0</td>
+            <td align="right">28036</td>
+            <td align="right">32105</td>
+            <td align="right">0</td>
+            </tr>
+            <tr>
+            <td>Sherman</td>
+            <td align="right">39.3633</td>
+            <td align="right">-101.7533</td>
+            <td align="right">5930</td>
+            <td align="right">36240</td>
+            <td align="right">41250</td>
+            <td align="right">27917</td>
+            <td align="right">34511</td>
+            <td align="right">41213</td>
+            <td align="right">43750</td>
+            <td align="right">41597</td>
+            <td align="right">0</td>
+            <td align="right">37932</td>
+            <td align="right">42244</td>
+            <td align="right">0</td>
+            <td align="right">78438</td>
+            <td align="right">26288</td>
+            <td align="right">0</td>
+            <td align="right">21544</td>
+            <td align="right">25756</td>
+            <td align="right">37280</td>
+            <td align="right">32344</td>
+            </tr>
+            <tr>
+            <td>Smith</td>
+            <td align="right">39.7631</td>
+            <td align="right">-98.7629</td>
+            <td align="right">3668</td>
+            <td align="right">31383</td>
+            <td align="right">20000</td>
+            <td align="right">22813</td>
+            <td align="right">33750</td>
+            <td align="right">41250</td>
+            <td align="right">51250</td>
+            <td align="right">41442</td>
+            <td align="right">24375</td>
+            <td align="right">31938</td>
+            <td align="right">40313</td>
+            <td align="right">43698</td>
+            <td align="right">94583</td>
+            <td align="right">21944</td>
+            <td align="right">17917</td>
+            <td align="right">15455</td>
+            <td align="right">26250</td>
+            <td align="right">31071</td>
+            <td align="right">41719</td>
+            </tr>
+            <tr>
+            <td>Stafford</td>
+            <td align="right">38.0368</td>
+            <td align="right">-98.79</td>
+            <td align="right">4207</td>
+            <td align="right">31518</td>
+            <td align="right">21094</td>
+            <td align="right">26339</td>
+            <td align="right">31338</td>
+            <td align="right">47031</td>
+            <td align="right">39000</td>
+            <td align="right">38628</td>
+            <td align="right">26111</td>
+            <td align="right">31453</td>
+            <td align="right">49375</td>
+            <td align="right">60313</td>
+            <td align="right">0</td>
+            <td align="right">23977</td>
+            <td align="right">11827</td>
+            <td align="right">0</td>
+            <td align="right">21929</td>
+            <td align="right">41000</td>
+            <td align="right">39750</td>
+            </tr>
+            <tr>
+            <td>Stanton</td>
+            <td align="right">37.5497</td>
+            <td align="right">-101.8065</td>
+            <td align="right">2060</td>
+            <td align="right">27418</td>
+            <td align="right">24674</td>
+            <td align="right">21875</td>
+            <td align="right">31864</td>
+            <td align="right">29688</td>
+            <td align="right">36172</td>
+            <td align="right">34028</td>
+            <td align="right">27031</td>
+            <td align="right">25595</td>
+            <td align="right">35469</td>
+            <td align="right">43472</td>
+            <td align="right">0</td>
+            <td align="right">19792</td>
+            <td align="right">0</td>
+            <td align="right">0</td>
+            <td align="right">26146</td>
+            <td align="right">18958</td>
+            <td align="right">18333</td>
+            </tr>
+            <tr>
+            <td>Stevens</td>
+            <td align="right">37.2843</td>
+            <td align="right">-101.244</td>
+            <td align="right">5612</td>
+            <td align="right">35885</td>
+            <td align="right">26328</td>
+            <td align="right">31806</td>
+            <td align="right">40526</td>
+            <td align="right">49948</td>
+            <td align="right">36136</td>
+            <td align="right">40997</td>
+            <td align="right">34350</td>
+            <td align="right">38424</td>
+            <td align="right">42130</td>
+            <td align="right">68462</td>
+            <td align="right">36023</td>
+            <td align="right">26138</td>
+            <td align="right">16250</td>
+            <td align="right">11250</td>
+            <td align="right">27708</td>
+            <td align="right">45972</td>
+            <td align="right">40037</td>
+            </tr>
+            <tr>
+            <td>Sumner</td>
+            <td align="right">37.2592</td>
+            <td align="right">-97.5123</td>
+            <td align="right">23159</td>
+            <td align="right">36287</td>
+            <td align="right">23596</td>
+            <td align="right">35405</td>
+            <td align="right">33880</td>
+            <td align="right">42969</td>
+            <td align="right">51659</td>
+            <td align="right">44045</td>
+            <td align="right">24728</td>
+            <td align="right">41362</td>
+            <td align="right">45409</td>
+            <td align="right">58281</td>
+            <td align="right">62857</td>
+            <td align="right">27611</td>
+            <td align="right">18889</td>
+            <td align="right">21412</td>
+            <td align="right">24838</td>
+            <td align="right">37083</td>
+            <td align="right">48482</td>
+            </tr>
+            <tr>
+            <td>Thomas</td>
+            <td align="right">39.4048</td>
+            <td align="right">-101.0338</td>
+            <td align="right">7788</td>
+            <td align="right">32432</td>
+            <td align="right">27167</td>
+            <td align="right">23846</td>
+            <td align="right">35361</td>
+            <td align="right">37800</td>
+            <td align="right">53583</td>
+            <td align="right">41422</td>
+            <td align="right">27417</td>
+            <td align="right">28363</td>
+            <td align="right">49595</td>
+            <td align="right">46354</td>
+            <td align="right">60530</td>
+            <td align="right">27743</td>
+            <td align="right">0</td>
+            <td align="right">19155</td>
+            <td align="right">25299</td>
+            <td align="right">28940</td>
+            <td align="right">44464</td>
+            </tr>
+            <tr>
+            <td>Trego</td>
+            <td align="right">38.9499</td>
+            <td align="right">-99.878</td>
+            <td align="right">2884</td>
+            <td align="right">35625</td>
+            <td align="right">0</td>
+            <td align="right">30917</td>
+            <td align="right">35344</td>
+            <td align="right">41481</td>
+            <td align="right">46319</td>
+            <td align="right">42179</td>
+            <td align="right">77989</td>
+            <td align="right">37292</td>
+            <td align="right">39300</td>
+            <td align="right">61354</td>
+            <td align="right">57841</td>
+            <td align="right">30640</td>
+            <td align="right">0</td>
+            <td align="right">23309</td>
+            <td align="right">31792</td>
+            <td align="right">34479</td>
+            <td align="right">36389</td>
+            </tr>
+            <tr>
+            <td>Wabaunsee</td>
+            <td align="right">38.9515</td>
+            <td align="right">-96.1913</td>
+            <td align="right">6874</td>
+            <td align="right">37188</td>
+            <td align="right">23558</td>
+            <td align="right">30354</td>
+            <td align="right">40079</td>
+            <td align="right">41679</td>
+            <td align="right">43438</td>
+            <td align="right">42440</td>
+            <td align="right">26071</td>
+            <td align="right">39234</td>
+            <td align="right">49567</td>
+            <td align="right">44297</td>
+            <td align="right">61667</td>
+            <td align="right">32304</td>
+            <td align="right">4185</td>
+            <td align="right">22167</td>
+            <td align="right">35000</td>
+            <td align="right">40446</td>
+            <td align="right">41304</td>
+            </tr>
+            <tr>
+            <td>Wallace</td>
+            <td align="right">38.9089</td>
+            <td align="right">-101.7583</td>
+            <td align="right">1524</td>
+            <td align="right">33785</td>
+            <td align="right">16458</td>
+            <td align="right">25556</td>
+            <td align="right">34750</td>
+            <td align="right">45208</td>
+            <td align="right">41964</td>
+            <td align="right">45417</td>
+            <td align="right">16944</td>
+            <td align="right">27431</td>
+            <td align="right">51875</td>
+            <td align="right">80156</td>
+            <td align="right">61250</td>
+            <td align="right">27500</td>
+            <td align="right">0</td>
+            <td align="right">23224</td>
+            <td align="right">26111</td>
+            <td align="right">34125</td>
+            <td align="right">40179</td>
+            </tr>
+            <tr>
+            <td>Washington</td>
+            <td align="right">39.7702</td>
+            <td align="right">-97.0813</td>
+            <td align="right">5485</td>
+            <td align="right">32536</td>
+            <td align="right">20096</td>
+            <td align="right">27313</td>
+            <td align="right">32179</td>
+            <td align="right">41575</td>
+            <td align="right">54500</td>
+            <td align="right">40502</td>
+            <td align="right">29375</td>
+            <td align="right">36900</td>
+            <td align="right">40203</td>
+            <td align="right">46583</td>
+            <td align="right">70917</td>
+            <td align="right">23830</td>
+            <td align="right">16875</td>
+            <td align="right">14074</td>
+            <td align="right">24007</td>
+            <td align="right">32500</td>
+            <td align="right">52212</td>
+            </tr>
+            <tr>
+            <td>Wichita</td>
+            <td align="right">38.4808</td>
+            <td align="right">-101.2885</td>
+            <td align="right">2125</td>
+            <td align="right">35278</td>
+            <td align="right">31875</td>
+            <td align="right">23750</td>
+            <td align="right">43125</td>
+            <td align="right">45917</td>
+            <td align="right">29833</td>
+            <td align="right">41436</td>
+            <td align="right">36161</td>
+            <td align="right">34000</td>
+            <td align="right">48750</td>
+            <td align="right">101719</td>
+            <td align="right">0</td>
+            <td align="right">25577</td>
+            <td align="right">25385</td>
+            <td align="right">17361</td>
+            <td align="right">0</td>
+            <td align="right">40625</td>
+            <td align="right">29875</td>
+            </tr>
+            <tr>
+            <td>Wilson</td>
+            <td align="right">37.5819</td>
+            <td align="right">-95.7525</td>
+            <td align="right">8675</td>
+            <td align="right">29722</td>
+            <td align="right">19531</td>
+            <td align="right">26045</td>
+            <td align="right">28281</td>
+            <td align="right">41781</td>
+            <td align="right">47750</td>
+            <td align="right">36162</td>
+            <td align="right">26786</td>
+            <td align="right">33681</td>
+            <td align="right">40048</td>
+            <td align="right">48500</td>
+            <td align="right">53929</td>
+            <td align="right">21265</td>
+            <td align="right">13750</td>
+            <td align="right">15450</td>
+            <td align="right">21525</td>
+            <td align="right">38958</td>
+            <td align="right">37188</td>
+            </tr>
+            <tr>
+            <td>Woodson</td>
+            <td align="right">37.8712</td>
+            <td align="right">-95.7273</td>
+            <td align="right">3147</td>
+            <td align="right">23216</td>
+            <td align="right">0</td>
+            <td align="right">21321</td>
+            <td align="right">22600</td>
+            <td align="right">36042</td>
+            <td align="right">50833</td>
+            <td align="right">30990</td>
+            <td align="right">26250</td>
+            <td align="right">26635</td>
+            <td align="right">30823</td>
+            <td align="right">48438</td>
+            <td align="right">95125</td>
+            <td align="right">20436</td>
+            <td align="right">0</td>
+            <td align="right">20417</td>
+            <td align="right">20221</td>
+            <td align="right">22727</td>
+            <td align="right">43958</td>
+            </tr>
+            <tr>
+            <td>Wyandotte</td>
+            <td align="right">39.099</td>
+            <td align="right">-94.7117</td>
+            <td align="right">165288</td>
+            <td align="right">30473</td>
+            <td align="right">22362</td>
+            <td align="right">27071</td>
+            <td align="right">32153</td>
+            <td align="right">40450</td>
+            <td align="right">49703</td>
+            <td align="right">33862</td>
+            <td align="right">26408</td>
+            <td align="right">31719</td>
+            <td align="right">38610</td>
+            <td align="right">43535</td>
+            <td align="right">50859</td>
+            <td align="right">26173</td>
+            <td align="right">16909</td>
+            <td align="right">22847</td>
+            <td align="right">28556</td>
+            <td align="right">37208</td>
+            <td align="right">49256</td>
+            </tr>
+            </tbody></table>
+        </div>
+    </div>
+  </div>
+  </section><!-- #data -->
+<!--==========================
+Footer
+============================-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>MLP</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Regna
+        -->
+        Designed by My Little Pandas Foundation (MLP)</a>
+      </div>
+    </div>
+  </footer><!-- #footer -->
+  
+</body>
+</html>
